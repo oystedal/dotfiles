@@ -52,7 +52,7 @@ font-1 = Wuncon Siji:pixelsize=12;1
 
 modules-left = i3
 ;modules-center = xwindow
-modules-right = xkeyboard battery temperature cpu load-average memory home filesystem wlan0 eth0 date
+modules-right = xkeyboard battery temperature cpu load-average memory home filesystem wlan0 eth0 enp0s3 date
 
 tray-position = right
 tray-padding = 1
@@ -175,18 +175,14 @@ format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.magenta}
 label = %percentage_used:3%% (%percentage_swap_used:3%%)
 
-[module/wlan0]
-type = internal/network
-interface = wlan0
-interval = 10
-
+[module/network-wlan]
+interval = 2
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = ${colors.green}
 label-connected = %essid% (%local_ip%) %{T2}%upspeed:9%%{T-}↑ %{T2}%downspeed:9%%{T-}↓
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
 label-disconnected = no wifi
 label-disconnected-foreground = ${colors.foreground-alt}
 
@@ -197,23 +193,33 @@ ramp-signal-3 = 
 ramp-signal-4 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
-[module/eth0]
-type = internal/network
-interface = eth0
-interval = 10
-
-format-connected-underline = ${colors.green}
-format-connected-prefix = " "
+[module/network-eth]
+interval = 2
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip% ↑%{T2}%upspeed:9%%{T-} ↓%{T2}%downspeed:9%%{T-}
+format-connected-prefix = " "
+format-connected-underline = ${colors.green}
+label-connected = %local_ip% %{T2}%upspeed:9%%{T-}↑ %{T2}%downspeed:9%%{T-}↓
 
-;format-disconnected =
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
 label-disconnected = no eth
 label-disconnected-foreground = ${colors.foreground-alt}
 label-disconnected-underline = ${xrdb:color1}
+
+[module/wlan0]
+type = internal/network
+inherit = module/network-wlan
+interface = wlan0
+
+[module/eth0]
+type = internal/network
+inherit = module/network-eth
+interface = eth0
+
+[module/enp0s3]
+type = internal/network
+inherit = module/network-eth
+interface = enp0s3
 
 [module/date]
 type = internal/date
