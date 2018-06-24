@@ -32,6 +32,8 @@ if dein#load_state('~/.vim/dein')
     call dein#add('scrooloose/syntastic')
     call dein#add('scrooloose/nerdtree', {'on_cmd': 'NERDTree'})
 
+    call dein#add('skywind3000/asyncrun.vim')
+
     " call dein#add('chrisjohnson/vim-foldfunctions')
 
     call dein#add('SirVer/ultisnips')
