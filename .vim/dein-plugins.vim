@@ -65,6 +65,8 @@ if dein#load_state('~/.vim/dein')
     " call dein#add('suan/vim-instant-markdown', {'on_ft': ['markdown']})
     " call dein#add('tpope/vim-markdown', {'on_ft': ['markdown']})
 
+    call dein#add('dawikur/algorithm-mnemonics.vim', { 'on_ft': ['cpp'] })
+
     " Colorschemes
     call dein#add('chriskempson/base16-vim')
 
