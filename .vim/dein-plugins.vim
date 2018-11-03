@@ -37,7 +37,6 @@ if dein#load_state('~/.vim/dein')
     " call dein#add('chrisjohnson/vim-foldfunctions')
 
     call dein#add('SirVer/ultisnips')
-    call dein#add('honza/vim-snippets', {'depends': ['ultisnips']})
 
     call dein#add('jiangmiao/auto-pairs')
 
@@ -65,7 +64,7 @@ if dein#load_state('~/.vim/dein')
     " call dein#add('suan/vim-instant-markdown', {'on_ft': ['markdown']})
     " call dein#add('tpope/vim-markdown', {'on_ft': ['markdown']})
 
-    call dein#add('dawikur/algorithm-mnemonics.vim', { 'on_ft': ['cpp'] })
+    call dein#add('oystedal/algorithm-mnemonics.vim', {'depends': 'ultisnips'})
 
     " Colorschemes
     call dein#add('chriskempson/base16-vim')
