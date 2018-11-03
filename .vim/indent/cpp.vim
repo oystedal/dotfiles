@@ -73,17 +73,25 @@ function! Cpp_indent_impl(line_num)
     elseif pline =~# '^\s*namespace.*'
         let retv = 0
     elseif cline =~ '^\s*,'
-
-        let retv = Cpp_indent_impl(pline_num)
-    elseif cline =~ '^\s*{'
-        " Blocks after a constructor should be unindented.
-        " If the previous line starts with , or :, do not use it to indent the
-        " next line
-        while pline =~ '^\s*[:,]'
+        while pline !~ '^\s*[:,]'
             let pline_num = prevnonblank(pline_num - 1)
             let pline = getline(pline_num)
         endwhile
         let retv = Cpp_indent_impl(pline_num)
+    elseif cline =~ '^\s*{'
+        " If the previous line starts with , : or ), do not use it to indent the
+        " next line
+
+        " while pline =~ '^\s*[:,]'
+        "     let pline_num = prevnonblank(pline_num - 1)
+        "     let pline = getline(pline_num)
+        " endwhile
+        if pline =~ '^\s*[:,]'
+            let retv = Cpp_indent_impl(pline_num) - &shiftwidth
+        else
+            let retv = cindent(pline_num)
+        endif
+
     elseif cline =~ '^\s*:'
         " Except certain cases with the conditional assignment operator (i.e. ? :)
         " a ':' on a new line indicates the first item in an initializer list. It
@@ -98,6 +106,8 @@ function! Cpp_indent_impl(line_num)
         else
             let retv = &shiftwidth + Cpp_indent_impl(a)
         endif
+    elseif cline =~ '^\s*);\s*$'
+        let retv = Cpp_indent_impl(pline_num) - &shiftwidth
     else
         " This line isn't a special case. Defer to cindent.
         let retv = cindent(cline_num)
@@ -119,7 +129,7 @@ setlocal softtabstop=4
 setlocal expandtab
 
 setlocal cindent
-setlocal cinoptions=:0,l1,g0,t0,i0,(0,w1
+setlocal cinoptions=:0,l1,g0,t0,i0,(0,Ws,N-s,j1
 
 setlocal indentexpr=Cpp_indent()
 " re-indent a line when a user enters ':' as the first non-white character on
