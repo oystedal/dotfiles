@@ -31,6 +31,10 @@ alias zshconf="vim ~/.zshrc"
 alias i3conf='vim $HOME/.config/i3/config'
 alias dotconf='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
+# dotfiles alias
+alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+# Hide untracked: dotfiles config --local status.showUntrackedFiles no
+
 # TODO: Test
 # alias lg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 
