@@ -1,29 +1,30 @@
+"dein Scripts-----------------------------
 if &compatible
     set nocompatible               " Be iMproved
 endif
 
 " Required:
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=/home/maestro/.vim/./dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('~/.vim/dein')
-    call dein#begin('~/.vim/dein')
+if dein#load_state('/home/maestro/.vim/./dein')
+    call dein#begin('/home/maestro/.vim/./dein')
 
     " Let dein manage dein
     " Required:
-    call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
+    call dein#add('/home/maestro/.vim/./dein/repos/github.com/Shougo/dein.vim')
 
     call dein#add('justinmk/vim-syntax-extra')
 
     " Stuff stolen from github.com/monokrome
     call dein#add('Shougo/denite.nvim')
     call dein#add('duff/vim-bufonly') " Remove all other buffers except the current with :BufOnly
-    call dein#add('majutsushi/tagbar', {'on_cmd': 'TagbarToggle'}) " A tagbar pane for the current buffer
-    call dein#add('neochrome/todo.vim') " A todo list for Vim.
-    call dein#add('tpope/vim-commentary') " Comment and uncomment lines with 'gc' verbs
+    " call dein#add('majutsushi/tagbar', {'on_cmd': 'TagbarToggle'}) " A tagbar pane for the current buffer
+    " call dein#add('neochrome/todo.vim') " A todo list for Vim.
+    " call dein#add('tpope/vim-commentary') " Comment and uncomment lines with 'gc' verbs
     call dein#add('tpope/vim-sensible') " Somewhat sensible defaults for modernizing Vim a bit by default.
     " call dein#add('tpope/vim-speeddating') " Manages dates more easily by adding support for them to CTRL-A/CTRL-X
-    call dein#add('vim-scripts/TaskList.vim') " Provides lists of tasks (TODO, FIXME, etc) related to the current buffer
+    " call dein#add('vim-scripts/TaskList.vim') " Provides lists of tasks (TODO, FIXME, etc) related to the current buffer
     " call dein#add('taxilian/a.vim') " Commands for jumping between alternate related files
 
     call dein#add('tpope/vim-surround')
@@ -35,17 +36,20 @@ if dein#load_state('~/.vim/dein')
     call dein#add('skywind3000/asyncrun.vim')
 
     " call dein#add('chrisjohnson/vim-foldfunctions')
-
+    
     call dein#add('SirVer/ultisnips')
 
+    call dein#add('oystedal/algorithm-mnemonics.vim', {'depends': ['ultisnips']})
+    
     call dein#add('jiangmiao/auto-pairs')
 
-    call dein#add('scrooloose/nerdcommenter')
+    " call dein#add('scrooloose/nerdcommenter')
 
     call dein#add('bling/vim-airline')
-    call dein#add('godlygeek/tabular', {'on_cmd': 'Tabularize'})
+    " call dein#add('godlygeek/tabular', {'on_cmd': 'Tabularize'})
 
-    call dein#add('Valloric/YouCompleteMe', { 'on_ft': ['c', 'cpp', 'go', 'rust'], 'build': 'python2 ./install.py --clang-completer --gocode-completer --racer-completer --tern-completer'})
+    call dein#add('Valloric/YouCompleteMe', { 'on_ft': ['c', 'cpp'], 'build': 'python ./install.py --clang-completer'})
+    " call dein#add('Valloric/YouCompleteMe', { 'on_ft': ['c', 'cpp', 'go', 'rust'], 'build': 'python ./install.py --clang-completer --gocode-completer --racer-completer --tern-completer'})
 
     call dein#add('kien/ctrlp.vim', {'on_cmd': ['CtrlP', 'CtrlPMRUFiles', 'CtrlPCurrWD']})
     call dein#add('mileszs/ack.vim', {'on_cmd': 'Ack'})
@@ -54,9 +58,9 @@ if dein#load_state('~/.vim/dein')
 
     call dein#add('lyuts/vim-rtags')
 
-    call dein#add('fatih/vim-go', {'on_ft': ['go']})
+    " call dein#add('fatih/vim-go', {'on_ft': ['go']})
 
-    call dein#add('rust-lang/rust.vim', {'on_ft': ['rust']})
+    " call dein#add('rust-lang/rust.vim', {'on_ft': ['rust']})
 
     " These plugins have no plugin/ directory, no need to be lazy
     " call dein#add('suan/vim-instant-markdown')
@@ -74,8 +78,16 @@ if dein#load_state('~/.vim/dein')
     call dein#save_state()
 endif
 
+" Required:
 filetype plugin indent on
 syntax enable
+
+" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
+
+"End dein Scripts-------------------------
 
 " Here's a few more plugins from github.com/monokrome
 "
