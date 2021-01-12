@@ -4,15 +4,15 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/home/maestro/.vim/./dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=/home/oydale/.vim/./dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('/home/maestro/.vim/./dein')
-    call dein#begin('/home/maestro/.vim/./dein')
+if dein#load_state('/home/oydale/.vim/./dein')
+    call dein#begin('/home/oydale/.vim/./dein')
 
     " Let dein manage dein
     " Required:
-    call dein#add('/home/maestro/.vim/./dein/repos/github.com/Shougo/dein.vim')
+    call dein#add('/home/oydale/.vim/./dein/repos/github.com/Shougo/dein.vim')
 
     call dein#add('justinmk/vim-syntax-extra')
 
@@ -48,7 +48,7 @@ if dein#load_state('/home/maestro/.vim/./dein')
     call dein#add('bling/vim-airline')
     " call dein#add('godlygeek/tabular', {'on_cmd': 'Tabularize'})
 
-    call dein#add('Valloric/YouCompleteMe', { 'on_ft': ['c', 'cpp'], 'build': 'python ./install.py --clang-completer'})
+    call dein#add('Valloric/YouCompleteMe', { 'on_ft': ['c', 'cpp', 'go'], 'build': 'python ./install.py --clang-completer'})
     " call dein#add('Valloric/YouCompleteMe', { 'on_ft': ['c', 'cpp', 'go', 'rust'], 'build': 'python ./install.py --clang-completer --gocode-completer --racer-completer --tern-completer'})
 
     call dein#add('kien/ctrlp.vim', {'on_cmd': ['CtrlP', 'CtrlPMRUFiles', 'CtrlPCurrWD']})

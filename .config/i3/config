@@ -31,8 +31,6 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec termite
-bindsym $mod+Shift+Return exec urxvt
-
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
 
@@ -185,7 +183,9 @@ exec --no-startup-id pa-applet
 # exec --no-startup-id dropboxd
 
 # Notifications
-exec --no-startup-id dunst
+# exec --no-startup-id dunst
+
+exec_always --no-startup-id "xrdb /home/oydale/.Xdefaults"
 
 # Disable touchpad by default
 exec --no-startup-id "sh /home/maestro/scripts/toggle-touchpad.sh"
@@ -196,7 +196,7 @@ exec --no-startup-id "setxkbmap -layout us,no -option grp:shift_toggle"
 # bindcode 111 exec "pamixer -i 10"
 # bindcode 116 exec "pamixer -d 10"
 
-bindsym $mod+Shift+F3 exec "sh /home/maestro/.i3/lock.sh"
+bindsym $mod+Shift+Escape exec "i3lock -c 333333"
 
 # bindcode $mod+Shift+60 exec "sh /home/maestro/.i3/wallpaper/rotate.sh"
 # bindcode $mod+Shift+59 exec "sh /home/maestro/.i3/wallpaper/rotate_reverse.sh"

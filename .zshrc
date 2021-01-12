@@ -94,6 +94,7 @@ alias ls="ls --color=tty -v --group-directories-first"
 
 export PATH="$HOME/go/bin/:$PATH"
 export PATH="$HOME/bin/:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # source "/etc/profile.d/vte.sh"
 
@@ -107,3 +108,23 @@ export PATH="$HOME/bin/:$PATH"
 #   export EDITOR='mvim'
 # fi
 export EDITOR='vim'
+
+alias sys="$HOME/git/lys-git.cisco.com/system-trunk-main/"
+alias sparks="$HOME/git/bitbucket/cloud-scripts/"
+
+function glorp() {
+    if [ $# -eq 0 ]; then
+        git log --reverse --patch master..HEAD
+    else
+        git log --reverse --patch $@
+    fi
+}
+
+eval `keychain -q --eval --agents ssh id_rsa`
+
+function lx() {
+    for logbundle in "$@"; do
+        local basename=`basename ${logbundle} .tar.gz`
+        mkdir -p "${basename}" && tar -C ${basename} --force-local -xf "${logbundle}"
+    done
+}
